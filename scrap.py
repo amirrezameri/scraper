@@ -167,18 +167,15 @@ class TwitterScraperApp:
         self.image_label.grid(row=9, column=0, columnspan=2, pady=10)
 
     def display_images_and_tweets(self, tweet_text, img_data):
-        # Display Tweet Text in the ScrolledText widget
         self.output_area.insert(tk.END, tweet_text + "\n\n")
 
         if img_data:
-            # Resize image to fit the label
             img = Image.open(BytesIO(img_data))
-            img = img.resize((100, 100))  # Resize to a reasonable size
+            img = img.resize((100, 100))  
             photo = ImageTk.PhotoImage(img)
 
-            # Update image label with the image
             self.image_label.config(image=photo)
-            self.image_label.image = photo  # Keep reference to avoid garbage collection
+            self.image_label.image = photo  
 
     def start_scraping(self):
         email = self.email_entry.get()
